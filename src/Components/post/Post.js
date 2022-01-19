@@ -5,12 +5,13 @@ import { useState } from "react"
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.like)
-  const [isLiked, setIsLiked] = useState(false)
 
-  const likeHandler = () => {
-    setLike(isLiked ? like - 1 : like + 1)
+  const descrement = () => {
+    setLike(like - 1)
   }
-
+  const increment = () => {
+    setLike(like + 1)
+  }
   return (
     <div className="container">
       <div className="post">
@@ -43,15 +44,15 @@ export default function Post({ post }) {
                 className="likeIcon"
                 src="assets/like.png"
                 alt=""
-                onClick={likeHandler}
+                onClick={increment}
               />
               <img
                 className="likeIcon"
                 src="assets/dislike.png"
                 alt=""
-                onClick={likeHandler}
+                onClick={descrement}
               />
-              <span className="postLikeCounter"> {post.like}</span>
+              <span className="postLikeCounter"> {like}</span>
             </div>
             <div className="postBottomRight">
               <span className="postCommentText">{post.comment} comments</span>
